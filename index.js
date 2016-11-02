@@ -17,7 +17,7 @@ class CitySelect extends Component {
   constructor(props) {
      super(props)
      this.state = {
-       modalY: new Animated.Value(deviceHeight)
+       modalY: new Animated.Value(deviceHeight),
      }
   }
 
@@ -42,6 +42,26 @@ class CitySelect extends Component {
     ))
 
     return cityItem
+  }
+
+  renderHeader(){
+    if(this.props.header){
+      return(
+        <View style={styles.header}>
+          <TouchableOpacity
+            style={styles.cancel}
+            onPress={this.props.cancelCity}
+          >
+            <Text style={styles.cancelText}>
+              {this.props.cancelText}
+            </Text>
+          </TouchableOpacity>
+          <Text>
+            {this.props.titleText}
+          </Text>
+        </View>
+      )
+    }
   }
 
   renderCitys() {
@@ -73,19 +93,7 @@ class CitySelect extends Component {
         ]}
       >
           <StatusBar hidden/>
-          <View style={styles.header}>
-            <TouchableOpacity
-              style={styles.cancel}
-              onPress={this.props.cancelCity}
-            >
-              <Text style={styles.cancelText}>
-                {this.props.cancelText}
-              </Text>
-            </TouchableOpacity>
-            <Text>
-              {this.props.titleText}
-            </Text>
-          </View>
+          {this.renderHeader()}
           <ScrollView>
             {this.renderCitys()}
           </ScrollView>
@@ -97,9 +105,11 @@ class CitySelect extends Component {
 CitySelect.defaultProps = {
   cancelText: '取消',
   titleText: '选择城市',
+  header: true,
 }
 
 CitySelect.propTypes = {
+  header: React.PropTypes.bool,
   cancelText: React.PropTypes.string,
   titleText: React.PropTypes.string,
   cancelCity: React.PropTypes.func.isRequired,
