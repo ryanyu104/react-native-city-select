@@ -82,13 +82,16 @@ class Example extends Component {
 
   render() {
     return (
-      <TouchableOpacity
-        onPress={this.handleCityPress}
-      >
-        <Text>
-          click me!
-        </Text>
-      </TouchableOpacity>
+      <View>
+        <TouchableOpacity
+          onPress={this.handleCityPress}
+        >
+          <Text>
+            click me!
+          </Text>
+        </TouchableOpacity>
+        {this.renderCitySelect()}
+      </View>
     )
   }
 
