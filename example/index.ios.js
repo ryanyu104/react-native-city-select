@@ -67,10 +67,10 @@ export default class AwesomeProject extends Component {
         <TouchableOpacity
           onPress={this.handleCityPress}
         >
-          <Text style={styles.welcome}>
+          <Text style={styles.click}>
             click me!
           </Text>
-          <Text style={styles.instructions}>
+          <Text style={styles.select}>
             已选择：{this.state.cityText} ID：{this.state.cityId}
           </Text>
         </TouchableOpacity>
@@ -87,12 +87,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
+  click: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
   },
-  instructions: {
+  select: {
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
