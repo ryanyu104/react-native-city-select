@@ -108,6 +108,7 @@ selectCity | function |
 cityData | object |
 cancelText | string | '取消'
 titleText | string | '选择城市'
+header | boolean | true
 
 
 ### The Response Object
