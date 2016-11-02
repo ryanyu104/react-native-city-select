@@ -11,7 +11,7 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native'
-import CitySelect from "./citySelect"
+import CitySelect from "react-native-city-select"
 import CITY from './cityData'
 
 export default class AwesomeProject extends Component {
