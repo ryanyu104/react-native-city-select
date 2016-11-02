@@ -17,7 +17,7 @@ class CitySelect extends Component {
   constructor(props) {
      super(props)
      this.state = {
-       modalY: new Animated.Value(deviceHeight)
+       modalY: new Animated.Value(deviceHeight),
      }
   }
 
@@ -76,7 +76,7 @@ class CitySelect extends Component {
           <View style={styles.header}>
             <TouchableOpacity
               style={styles.cancel}
-              onPress={this.props.cancelCity}
+              onPress={this.handleCancelCity}
             >
               <Text style={styles.cancelText}>
                 {this.props.cancelText}
