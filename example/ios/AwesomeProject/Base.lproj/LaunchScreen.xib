@@ -66,13 +66,13 @@
                     </variation>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Txt-OT-gE8">
-                    <rect key="frame" x="8" y="190" width="359" height="142"/>
+                    <rect key="frame" x="8" y="190" width="368" height="151"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="React-native-city-select" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fbN-lS-A5I">
-                            <rect key="frame" x="0.0" y="0.0" width="359" height="142"/>
+                            <rect key="frame" x="0.0" y="0.0" width="368" height="151"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                     </subviews>

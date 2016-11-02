@@ -12,14 +12,6 @@
 
 `npm install react-native-city-select@latest --save`
 
-### Automatic Installation
-
-**React Native >= 0.29**
-`$react-native link`
-
-**React Native < 0.29**
-`$rnpm link`
-
 ## Usage
 
 ```javascript
@@ -104,7 +96,7 @@ titleText | string | '选择城市'
 
 ### The Response Object
 
-key | Description
+key | Type
 ------  | ----------------------
 cityObj | Object
 
