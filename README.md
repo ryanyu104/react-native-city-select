@@ -5,6 +5,7 @@
 ## Table of contents
 - [Install](#install)
 - [Usage](#usage)
+- [Notice](#notice)
 - [Options](#options)
 - [Response object](#the-response-object)
 
