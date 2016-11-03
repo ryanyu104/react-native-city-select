@@ -9,7 +9,7 @@
   "dependencies": {
     "react": "15.3.2",
     "react-native": "0.35.0",
-    "react-native-city-select": "0.0.2"
+    "react-native-city-select": "0.0.7"
   },
   "jest": {
     "preset": "jest-react-native"

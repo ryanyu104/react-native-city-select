@@ -1,46 +1,4 @@
 const CITY = {
-  HOT: [
-    {
-      cityId: '10',
-      cityName: '北京',
-      cityNameEn: 'Beijing',
-    },
-    {
-      cityId: '82',
-      cityName: '上海',
-      cityNameEn: 'Shanghai',
-    },
-    {
-      cityId: '210',
-      cityName: '广州',
-      cityNameEn: 'Guangzhou',
-    },
-    {
-      cityId: '221',
-      cityName: '深圳',
-      cityNameEn: 'Shenzhen',
-    },
-    {
-      cityId: '267',
-      cityName: '成都',
-      cityNameEn: 'Chengdu',
-    },
-    {
-      cityId: '179',
-      cityName: '武汉',
-      cityNameEn: 'Wuhan',
-    },
-    {
-      cityId: '83',
-      cityName: '南京',
-      cityNameEn: 'Nanjing',
-    },
-    {
-      cityId: '96',
-      cityName: '杭州',
-      cityNameEn: 'Hangzhou',
-    },
-  ],
   A: [
     {
       cityId: '279',

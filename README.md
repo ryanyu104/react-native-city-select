@@ -99,11 +99,41 @@ class Example extends Component {
 
 ```
 
+###Notice
+
+<b>Position:</b> Put the CitySelect component at the bottom of the container, avoid hierarchical relation problem.
+
+<b>City data:</b> Get all Chinese cities data, [click here] (https://github.com/ryanyu104/react-native-city-select/blob/master/cityData.js)
+
+```javascript
+
+  const CITY = {
+    A: [
+      {
+        cityId: '279',
+        cityName: '阿坝',
+        cityNameEn: 'Aba',
+      },
+      {
+        cityId: '329',
+        cityName: '安康',
+        cityNameEn: 'Ankang',
+      },
+      ...
+    ],
+    ...
+  }
+
+```
+
+
 ### Options
 
 Key | Type | Defalut
 ------ | ---- |  ----
 cancelCity | function |
+cancelColor | string | '#51a8fb'
+cancelSize | number | 14
 selectCity | function |
 cityData | object |
 cancelText | string | '取消'

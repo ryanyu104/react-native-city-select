@@ -45,6 +45,10 @@ class CitySelect extends Component {
   }
 
   renderHeader(){
+    const cancelText={
+      color: this.props.cancelColor,
+      fontSize: this.props.cancelSize
+    }
     if(this.props.header){
       return(
         <View style={styles.header}>
@@ -52,7 +56,7 @@ class CitySelect extends Component {
             style={styles.cancel}
             onPress={this.props.cancelCity}
           >
-            <Text style={styles.cancelText}>
+            <Text style={cancelText}>
               {this.props.cancelText}
             </Text>
           </TouchableOpacity>
@@ -106,11 +110,15 @@ CitySelect.defaultProps = {
   cancelText: '取消',
   titleText: '选择城市',
   header: true,
+  cancelColor: '#51a8fb',
+  cancelSize : 14,
 }
 
 CitySelect.propTypes = {
   header: React.PropTypes.bool,
   cancelText: React.PropTypes.string,
+  cancelColor: React.PropTypes.string,
+  cancelSize: React.PropTypes.number,
   titleText: React.PropTypes.string,
   cancelCity: React.PropTypes.func.isRequired,
   selectCity: React.PropTypes.func.isRequired,
@@ -139,9 +147,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 10,
   },
-  cancelText: {
-    color: '#51a8fb',
-  },
   title: {
     backgroundColor: '#F2F2F2',
     padding: 10,
@@ -154,7 +159,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   city: {
-    width: deviceWidth*0.25,
+    width: deviceWidth*1/3,
     height: 40,
     borderRightWidth: 1,
     borderBottomWidth: 1,
