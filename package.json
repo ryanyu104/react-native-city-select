@@ -1,6 +1,6 @@
 {
   "name": "react-native-city-select",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "auth": "ryanyu104",
   "dependencies": {},
   "homepage": "https://github.com/ryanyu104/react-native-city-select#readme",
@@ -8,7 +8,8 @@
     "react-native",
     "react-native-city-select",
     "react",
-    "native",
-    "city"
+    "city",
+    "city-select",
+    "select-city"
   ]
 }
