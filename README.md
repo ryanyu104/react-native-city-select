@@ -98,7 +98,7 @@ class Example extends Component {
 
 ```
 
-###Notice
+### Notice
 
 <b>Position:</b> Put the CitySelect component at the bottom of the container, to avoid hierarchical relation problem.
 
