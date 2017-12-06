@@ -45,19 +45,15 @@ class Example extends Component {
       cityText: '',
       cityId: '',
     }
-
-    this.handleCityCancel = this.handleCityCancel.bind(this)
-    this.handleCitySelect = this.handleCitySelect.bind(this)
-    this.handleCityPress = this.handleCityPress.bind(this)
   }
 
-  handleCityPress() {
+  handleCityPress=()=> {
     this.setState({
       cityStatus: true,
     })
   }
 
-  handleCitySelect(cityObj) {
+  handleCitySelect=(cityObj)=> {
     this.setState({
       cityStatus: false,
       cityText: cityObj.cityName,
@@ -65,7 +61,7 @@ class Example extends Component {
     })
   }
 
-  handleCityCancel() {
+  handleCityCancel=()=> {
     this.setState({
       cityStatus: false,
     })
