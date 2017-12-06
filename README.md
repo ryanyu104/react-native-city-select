@@ -100,9 +100,9 @@ class Example extends Component {
 
 ###Notice
 
-<b>Position:</b> Put the CitySelect component at the bottom of the container, avoid hierarchical relation problem.
+<b>Position:</b> Put the CitySelect component at the bottom of the container, to avoid hierarchical relation problem.
 
-<b>City data:</b> Get all Chinese cities data, [click here](https://github.com/ryanyu104/react-native-city-select/blob/master/cityData.js)
+<b>City data:</b> Get the data of Chinese cities, [click here](https://github.com/ryanyu104/react-native-city-select/blob/master/cityData.js)
 
 
 ```javascript

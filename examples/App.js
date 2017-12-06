@@ -59,7 +59,7 @@ export default class App extends React.Component {
           onPress={this.handleCityPress}
         >
           <Text style={styles.click}>
-            click me!
+            click me!!!
           </Text>
           <Text style={styles.select}>
             已选择：{this.state.cityText} ID：{this.state.cityId}
