@@ -47,6 +47,7 @@ export default class App extends React.Component {
             cancelCity={this.handleCityCancel}
             selectCity={this.handleCitySelect}
             cityData={CITY}
+            selectedId={this.state.cityId}
          />
       )
     }

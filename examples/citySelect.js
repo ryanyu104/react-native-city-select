@@ -30,17 +30,21 @@ class CitySelect extends Component {
   }
 
   renderCityItem(cityData) {
-    const cityItem = cityData.map((i, item) => (
-      <TouchableOpacity
-        style={styles.city}
-        key={i.cityId}
-        onPress={this.props.selectCity.bind(this,i)}
-      >
-        <Text style={styles.cityText}>
-          {i.cityName}
-        </Text>
-      </TouchableOpacity>
-    ))
+    const cityItem = cityData.map((i, item) => {
+      const selectedStyle = { backgroundColor: this.props.selectedBg }
+      const extendStyle = this.props.selectedId === i.cityId ? selectedStyle : {}
+      return(
+          <TouchableOpacity
+          style={[styles.city, extendStyle]}
+          key={i.cityId}
+          onPress={this.props.selectCity.bind(this,i)}
+        >
+          <Text style={styles.cityText}>
+            {i.cityName}
+          </Text>
+        </TouchableOpacity>
+      )
+    })
 
     return cityItem
   }
@@ -50,7 +54,7 @@ class CitySelect extends Component {
       color: this.props.cancelColor,
       fontSize: this.props.cancelSize
     }
-    if(this.props.header){
+    if(this.props.hasHeader){
       return(
         <View style={styles.header}>
             <TouchableOpacity
@@ -110,19 +114,23 @@ class CitySelect extends Component {
 }
 
 CitySelect.defaultProps = {
+  selectedId: '',
   cancelText: '取消',
   titleText: '选择城市',
-  header: true,
+  hasHeader: true,
   cancelColor: '#51a8fb',
   cancelSize : 14,
+  selectedBg: '#26A1FD',
 }
 
 CitySelect.propTypes = {
-  header: PropTypes.bool,
+  hasHeader: PropTypes.bool,
   cancelText: PropTypes.string,
   cancelColor: PropTypes.string,
   cancelSize: PropTypes.number,
   titleText: PropTypes.string,
+  selectedId: PropTypes.string,
+  selectedBg: PropTypes.string,
   cancelCity: PropTypes.func.isRequired,
   selectCity: PropTypes.func.isRequired,
   cityData: PropTypes.object.isRequired,

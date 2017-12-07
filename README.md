@@ -74,6 +74,7 @@ class Example extends Component {
           cancelCity={this.handleCityCancel}
           selectCity={this.handleCitySelect}
           cityData={CITY}
+          selectedId={this.state.cityId}
         />
       )
     }
@@ -131,14 +132,16 @@ class Example extends Component {
 
 Key | Type | Defalut
 ------ | ---- |  ----
-cancelCity | function |
+cancelCity | function | null
 cancelColor | string | '#51a8fb'
 cancelSize | number | 14
-selectCity | function |
-cityData | object |
+selectedBg | string | '#26A1FD'
+selectedId | string | ''
+selectCity | function | null
+cityData | object | null
 cancelText | string | '取消'
 titleText | string | '选择城市'
-header | boolean | true
+hasHeader | boolean | true
 
 
 ### The Response Object
