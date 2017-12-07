@@ -2,7 +2,7 @@
 [![MIT](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/ryanyu104/react-native-city-select/blob/master/LICENSE.md)
 [![npm downloads](https://img.shields.io/npm/dm/react-native-city-select.svg)](https://www.npmjs.com/package/react-native-city-select)
 
-![ui](./ui.png)
+![ui](./ui.png )
 
 ## Table of contents
 - [Install](#install)
