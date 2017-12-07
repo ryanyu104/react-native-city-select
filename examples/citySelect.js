@@ -31,8 +31,16 @@ class CitySelect extends Component {
 
   renderCityItem(cityData) {
     const cityItem = cityData.map((i, item) => {
-      const selectedStyle = { backgroundColor: this.props.selectedBg }
-      const extendStyle = this.props.selectedId === i.cityId ? selectedStyle : {}
+      const cityWidth = { width: deviceWidth * this.props.cityGrid }
+      const selectedBg = { backgroundColor: this.props.selectedBg }
+      const cityTextCenter = this.props.cityGrid === 1 ? {} : { alignItems: 'center' }
+      const selectedStyle = this.props.selectedId === i.cityId ? selectedBg : {}
+
+      const extendStyle={
+        ...cityWidth,
+        ...cityTextCenter,
+        ...selectedStyle,
+      }
       return(
           <TouchableOpacity
           style={[styles.city, extendStyle]}
@@ -121,6 +129,7 @@ CitySelect.defaultProps = {
   cancelColor: '#51a8fb',
   cancelSize : 14,
   selectedBg: '#26A1FD',
+  cityGrid: 0.5,
 }
 
 CitySelect.propTypes = {
@@ -131,6 +140,7 @@ CitySelect.propTypes = {
   titleText: PropTypes.string,
   selectedId: PropTypes.string,
   selectedBg: PropTypes.string,
+  cityGrid: PropTypes.number,
   cancelCity: PropTypes.func.isRequired,
   selectCity: PropTypes.func.isRequired,
   cityData: PropTypes.object.isRequired,
@@ -171,12 +181,11 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   city: {
-    width: deviceWidth*1/3,
     height: 40,
+    padding: 15,
     borderRightWidth: 1,
     borderBottomWidth: 1,
     borderColor: '#f3f3f3',
-    alignItems: 'center',
     justifyContent: 'center'
   },
   cityText: {
