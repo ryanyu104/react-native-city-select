@@ -142,7 +142,7 @@ cityData | object | null
 cancelText | string | '取消'
 titleText | string | '选择城市'
 hasHeader | boolean | true
-cityGrid | number | 0.5
+cityGrid | number | 1
 
 
 

@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   Text,
   View,
@@ -9,94 +9,110 @@ import {
   ScrollView,
   Animated,
   Dimensions,
-} from 'react-native'
+  FlatList,
+} from 'react-native';
 
-const deviceWidth = Dimensions.get('window').width
-const deviceHeight = Dimensions.get('window').height
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
 
 class CitySelect extends Component {
   constructor(props) {
-     super(props)
-     this.state = {
-       modalY: new Animated.Value(deviceHeight),
-     }
+    super(props);
+    this.state = {
+      modalY: new Animated.Value(deviceHeight),
+    };
   }
 
   componentDidMount() {
     Animated.timing(this.state.modalY, {
       duration: 500,
-      toValue: 0
-    }).start()
+      toValue: 0,
+    }).start();
+  }
+
+  getExtendStyle(item) {
+    const cityWidth = { width: deviceWidth / this.props.cityGrid };
+    const selectedBg = { backgroundColor: this.props.selectedBg };
+    const cityTextCenter = this.props.cityGrid === 1 ? {} : { alignItems: 'center' };
+    const selectedStyle = this.props.selectedId === item.cityId ? selectedBg : {};
+
+    const extendStyle = {
+      ...cityWidth,
+      ...cityTextCenter,
+      ...selectedStyle,
+    };
+    return extendStyle;
   }
 
   renderCityItem(cityData) {
-    const cityItem = cityData.map((i, item) => {
-      const cityWidth = { width: deviceWidth * this.props.cityGrid }
-      const selectedBg = { backgroundColor: this.props.selectedBg }
-      const cityTextCenter = this.props.cityGrid === 1 ? {} : { alignItems: 'center' }
-      const selectedStyle = this.props.selectedId === i.cityId ? selectedBg : {}
-
-      const extendStyle={
-        ...cityWidth,
-        ...cityTextCenter,
-        ...selectedStyle,
-      }
-      return(
+    return (
+      <FlatList
+        numColumns={this.props.cityGrid}
+        removeClippedSubviews
+        initialListSize={20}
+        keyExtractor={(item, index) => `cityItem${index}`}
+        data={cityData}
+        renderItem={({ item }) => (
           <TouchableOpacity
-          style={[styles.city, extendStyle]}
-          key={i.cityId}
-          onPress={this.props.selectCity.bind(this,i)}
-        >
-          <Text style={styles.cityText}>
-            {i.cityName}
-          </Text>
-        </TouchableOpacity>
-      )
-    })
-
-    return cityItem
+            style={[styles.city, this.getExtendStyle(item)]}
+            key={item.cityId}
+            onPress={this.props.selectCity.bind(this, item)}
+          >
+            <Text style={styles.cityText}>
+              {item.cityName}
+            </Text>
+          </TouchableOpacity>
+        )}
+      />
+    );
   }
 
-  renderHeader(){
-    const cancelText={
+  renderHeader() {
+    const cancelText = {
       color: this.props.cancelColor,
-      fontSize: this.props.cancelSize
-    }
-    if(this.props.hasHeader){
-      return(
+      fontSize: this.props.cancelSize,
+    };
+    if (this.props.hasHeader) {
+      return (
         <View style={styles.header}>
-            <TouchableOpacity
-              style={styles.cancel}
-              onPress={this.props.cancelCity}
-            >
-              <Text style={cancelText}>
-                {this.props.cancelText}
-              </Text>
-            </TouchableOpacity>
-            <View  style={styles.titleText}>
-              <Text>
-                {this.props.titleText}
-              </Text>
-            </View>
-         </View>
-      )
+          <TouchableOpacity
+            style={styles.cancel}
+            onPress={this.props.cancelCity}
+          >
+            <Text style={cancelText}>
+              {this.props.cancelText}
+            </Text>
+          </TouchableOpacity>
+          <View style={styles.titleText}>
+            <Text>
+              {this.props.titleText}
+            </Text>
+          </View>
+        </View>
+      );
     }
   }
 
   renderCitys() {
-    const CITY=this.props.cityData
-    const citys = Object.keys(CITY).map((index, ele) => (
-      <View key={index}>
-        <Text style={styles.title}>
-          {index}
-        </Text>
-        <View style={styles.cityBox}>
-          {this.renderCityItem(CITY[index])}
-        </View>
-      </View>
-    ))
-
-    return citys
+    const CITY = this.props.cityData;
+    return (
+      <FlatList
+        removeClippedSubviews
+        initialListSize={10}
+        keyExtractor={(item, index) => `letter${index}`}
+        data={Object.keys(CITY)}
+        renderItem={({ item }) => (
+          <View>
+            <Text style={styles.title}>
+              {item}
+            </Text>
+            <View style={styles.cityBox}>
+              {this.renderCityItem(CITY[item])}
+            </View>
+          </View>
+        )}
+      />
+    );
   }
 
   render() {
@@ -106,18 +122,18 @@ class CitySelect extends Component {
           styles.container,
           {
             transform: [{
-              translateY: this.state.modalY
-            }]
-          }
+              translateY: this.state.modalY,
+            }],
+          },
         ]}
       >
-          <StatusBar hidden/>
-          {this.renderHeader()}
-          <ScrollView>
-            {this.renderCitys()}
-          </ScrollView>
+        <StatusBar hidden />
+        {this.renderHeader()}
+        <ScrollView>
+          {this.renderCitys()}
+        </ScrollView>
       </Animated.View>
-    )
+    );
   }
 }
 
@@ -127,10 +143,10 @@ CitySelect.defaultProps = {
   titleText: '选择城市',
   hasHeader: true,
   cancelColor: '#51a8fb',
-  cancelSize : 14,
+  cancelSize: 14,
   selectedBg: '#26A1FD',
-  cityGrid: 0.5,
-}
+  cityGrid: 1,
+};
 
 CitySelect.propTypes = {
   hasHeader: PropTypes.bool,
@@ -144,7 +160,7 @@ CitySelect.propTypes = {
   cancelCity: PropTypes.func.isRequired,
   selectCity: PropTypes.func.isRequired,
   cityData: PropTypes.object.isRequired,
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -164,7 +180,7 @@ const styles = StyleSheet.create({
     borderColor: '#F2F2F2',
     borderBottomWidth: 1,
   },
-  cancel:{
+  cancel: {
     position: 'absolute',
     left: 10,
     top: 15,
@@ -186,12 +202,12 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderBottomWidth: 1,
     borderColor: '#f3f3f3',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   cityText: {
     color: '#333',
     fontSize: 12,
-  }
-})
+  },
+});
 
-export default CitySelect
+export default CitySelect;
