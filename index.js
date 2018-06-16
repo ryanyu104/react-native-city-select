@@ -116,6 +116,9 @@ class CitySelect extends Component {
   }
 
   render() {
+    if(!this.props.isVisable){
+      return null
+    }
     return (
       <Animated.View
         style={[
@@ -146,6 +149,7 @@ CitySelect.defaultProps = {
   cancelSize: 14,
   selectedBg: '#26A1FD',
   cityGrid: 1,
+  isVisable: true,
 };
 
 CitySelect.propTypes = {
@@ -157,6 +161,7 @@ CitySelect.propTypes = {
   selectedId: PropTypes.string,
   selectedBg: PropTypes.string,
   cityGrid: PropTypes.number,
+  isVisable: PropTypes.bool,
   cancelCity: PropTypes.func.isRequired,
   selectCity: PropTypes.func.isRequired,
   cityData: PropTypes.object.isRequired,
@@ -198,7 +203,7 @@ const styles = StyleSheet.create({
   },
   city: {
     height: 40,
-    padding: 15,
+    padding: 10,
     borderRightWidth: 1,
     borderBottomWidth: 1,
     borderColor: '#f3f3f3',

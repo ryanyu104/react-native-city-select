@@ -19,83 +19,69 @@
 
 ```javascript
 
-import CitySelect from "react-native-city-select"
+import React, { Component } from 'react';
+import { StyleSheet, Text, View,TouchableOpacity } from 'react-native';
+import CitySelect from 'react-native-city-select'
+import CITY from './cityData.js'
 
-const CITY = {
-  A: [
-    {
-      cityId: '279',
-      cityName: '阿坝',
-      cityNameEn: 'Aba',
-    },
-    {
-      cityId: '329',
-      cityName: '安康',
-      cityNameEn: 'Ankang',
-    },
-  ],
-}
-
-class Example extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
-      cityStatus: false,
+      isVisable: false,
       cityText: '',
       cityId: '',
     }
   }
 
-  handleCityPress=()=> {
+  handleChangeCityStatus=()=>{
     this.setState({
-      cityStatus: true,
+      isVisable: !this.state.isVisable,
     })
   }
 
   handleCitySelect=(cityObj)=> {
     this.setState({
-      cityStatus: false,
+      isVisable: false,
       cityText: cityObj.cityName,
       cityId: cityObj.cityId,
     })
   }
 
-  handleCityCancel=()=> {
-    this.setState({
-      cityStatus: false,
-    })
-  }
-
-  renderCitySelect() {
-    if (this.state.cityStatus) {
-      return (
-        <CitySelect
-          cancelCity={this.handleCityCancel}
-          selectCity={this.handleCitySelect}
-          cityData={CITY}
-          selectedId={this.state.cityId}
-        />
-      )
-    }
-  }
-
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <TouchableOpacity
-          onPress={this.handleCityPress}
+          onPress={this.handleChangeCityStatus}
         >
           <Text>
             click me!
           </Text>
         </TouchableOpacity>
-        {this.renderCitySelect()}
+        <Text>
+          {this.state.cityText}{this.state.cityId}
+        </Text>
+        <CitySelect
+          isVisable={this.state.isVisable}
+          cancelCity={this.handleChangeCityStatus}
+          selectCity={this.handleCitySelect}
+          cityData={CITY}
+          selectedId={this.state.cityId}
+          cityGrid={2}
+        />
       </View>
     )
   }
-
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center'
+  },
+});
+
 
 ```
 
